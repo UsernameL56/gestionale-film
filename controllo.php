@@ -1,15 +1,10 @@
 <?php
 require "db.php";
+require "accessoDB.php";
 
 session_start();
 
-// Connessione al database
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  die("Connection failed: " . $e->getMessage());
-}
+
 
 // Funzione per il login
 if (isset($_POST['login'])) {
