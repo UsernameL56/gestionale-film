@@ -26,9 +26,11 @@ try {
     <div class="container">
         <h1 class="text-center">FILM</h1>
     <?php
+    
         foreach ($data as $row) {
           //visualizza risultati (array usato con indice o come array associativo) 
-          echo "<h3>Titolo: ".$row["Titolo"]."<br>Data di uscita: ".$row["Data_Uscita"]. "<br>Descrizione: ". $row["Descrizione"]."</h3><hr>";
+          echo "<h3>Titolo: ".$row["Titolo"]."<br>Data di uscita: ".$row["Data_Uscita"]. "<br>Descrizione: ". $row["Descrizione"]."</h3>";
+          echo "<img width='150' height='200' src=img/".$row["Copertina"]."> <hr>";
         }
       } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
