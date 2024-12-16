@@ -1,16 +1,10 @@
 <?php
 require "db.php";
+require "accessoDB.php";
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  // echo "Connected successfully";
-  
   $statement = $conn->prepare("SELECT * FROM filmDB_Films");
   $statement->execute();
-
- $data = $statement->fetchAll();
+  $data = $statement->fetchAll();
 ?>
 
 <!doctype html>
@@ -32,9 +26,6 @@ try {
           echo "<h3>Titolo: ".$row["Titolo"]."<br>Data di uscita: ".$row["Data_Uscita"]. "<br>Descrizione: ". $row["Descrizione"]."</h3>";
           echo "<img width='150' height='200' src=img/".$row["Copertina"]."> <hr>";
         }
-      } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-      }
     ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
