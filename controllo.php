@@ -4,7 +4,23 @@ require "accessoDB.php";
 
 session_start();
 
+// Imposta la durata della sessione solo durante la vita del browser
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.gc_maxlifetime', 0);
 
+// Verifica se l'utente è loggato (per altre pagine)
+if (isset($_GET['check_session']) && !isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Funzione per interrompere la sessione
+function logout_user() {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 
 // Funzione per il login
 if (isset($_POST['login'])) {
@@ -24,7 +40,7 @@ if (isset($_POST['login'])) {
     header("Location: index.php");
     exit;
   } else {
-    header("Location: login.php");
+    header("Location: login.php?message=login_error");
   }
 } else if (isset($_POST['register'])) {
   $nome = $_POST['nome'];
@@ -38,15 +54,18 @@ if (isset($_POST['login'])) {
   $check->execute();
 
   if ($check->rowCount() > 0) {
-    $register_error = "Email già registrata.";
+      header("Location: register.php?message=email_exists");
+      exit;
   } else {
-    $statement = $conn->prepare("INSERT INTO filmDB_Users (Nome, Cognome, Email, Password, Admin) VALUES (:nome, :cognome, :email, :password, 0)");
-    $statement->bindParam(':nome', $nome);
-    $statement->bindParam(':cognome', $cognome);
-    $statement->bindParam(':email', $email);
-    $statement->bindParam(':password', $password);
-    $statement->execute();
-    header("Location: login.php");
+      $statement = $conn->prepare("INSERT INTO filmDB_Users (Nome, Cognome, Email, Password, Admin) VALUES (:nome, :cognome, :email, :password, 0)");
+      $statement->bindParam(':nome', $nome);
+      $statement->bindParam(':cognome', $cognome);
+      $statement->bindParam(':email', $email);
+      $statement->bindParam(':password', $password);
+      $statement->execute();
+
+      header("Location: login.php?message=registered");
+      exit;
   }
 }
 ?>
