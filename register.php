@@ -12,7 +12,7 @@
 <body>
   <div class="container">
     <h1>Registrazione</h1>
-    <form method="post">
+    <form action="controllo.php" method="post">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" name="nome" placeholder="Nome" required>
@@ -31,10 +31,6 @@
       </div>
       <button type="submit" class="btn btn-primary" name="register">Registrati</button>
     </form>
-    <?php if (isset($register_error))
-      echo "<p>$register_error</p>"; ?>
-    <?php if (isset($register_success))
-      echo "<p>$register_success</p>"; ?>
     <p>Sei già registrato? <a href="login.php">Accedi qui</a></p>
 
   </div>
