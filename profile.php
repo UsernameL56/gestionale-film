@@ -78,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['Email']) ?>" required>
             </div>
-            <button type="submit" class="btn btn-primary">Aggiorna Profilo</button>
         </form>
 
         <a href="index.php" class="btn btn-secondary mt-3">Torna alla Home</a>

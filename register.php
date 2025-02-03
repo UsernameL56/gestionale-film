@@ -1,17 +1,59 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Registrazione</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #434343);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn-primary {
+      background: #007bff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Registrazione</h1>
+  <div class="form-container">
+    <h2 class="text-center mb-4">Registrazione</h2>
     <form action="controllo.php" method="post">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
@@ -29,10 +71,11 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
       </div>
-      <button type="submit" class="btn btn-primary" name="register">Registrati</button>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-warning" name="register">Registrati</button>
+      </div>
     </form>
-    <p>Sei già registrato? <a href="login.php">Accedi qui</a></p>
-
+    <p class="text-center mt-3">Sei già registrato? <a href="login.php">Accedi qui</a></p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -126,6 +126,35 @@ if ($filmID) {
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(17, 17, 17);">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.php">
+            <img src="img/filmDB_Logo.png" alt="Logo" style="height: 80px;">
+        </a>
+
+        <!-- Toggler per dispositivi mobili -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Contenuto della navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Dropdown menu utente -->
+            <div class="dropdown ms-auto">
+                <button class="btn dropdown-toggle text-light" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="img/user.png" alt="Menu" style="height: 35px;">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDropdown">
+                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
     <div class="container my-4">
       <div class="mb-3">
         <a href="index.php" class="btn btn-outline-secondary">&larr; Back to Films</a>
